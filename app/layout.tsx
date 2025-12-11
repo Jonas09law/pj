@@ -1,11 +1,9 @@
-"use client";
-
 import type React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script"; 
 import "./globals.css";
+import { DisableDevtoolScript } from "./DisableDevtoolScript";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -24,21 +22,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt">
-      <body className={`font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {children}
-        
-        <Script
-          src="https://cdn.jsdelivr.net/npm/disable-devtool"
-          strategy="afterInteractive" 
-          onLoad={() => {
-            console.log(":))");
-          }}
-        />
+
+        {/* Script interativo movido para Client Component */}
+        <DisableDevtoolScript />
+
+        {/* Analytics funciona normalmente em Server Component */}
         <Analytics />
       </body>
     </html>
