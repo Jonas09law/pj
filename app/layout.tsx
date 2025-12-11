@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         {children}
 
-        {/* Script interativo movido para Client Component */}
+        {/* Script crítico carregado antes da interação */}
         <DisableDevtoolScript />
 
         {/* Analytics funciona normalmente em Server Component */}
